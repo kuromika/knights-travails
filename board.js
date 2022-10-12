@@ -87,14 +87,25 @@ function printBFS(results) {
             ` predecessor = ${results[i][j].predecessor}`);
         }
     }
-    
 }
 
+function buildPath(start, end) {
 
-const graph = buildGraph(knight);
+    const adjacencyList = buildGraph(knight);
 
-//printGraph(graph);
+    const results = breadthFirstSearch(adjacencyList, start);
 
-const results = breadthFirstSearch(graph, [7, 7]);
+    let endVertex = results[end[0]][end[1]];
 
-printBFS(results);
+    const path = [end];
+
+    while (endVertex.predecessor !== start) {
+        path.push(endVertex.predecessor);
+        endVertex = results[endVertex.predecessor[0]][endVertex.predecessor[1]];
+    }
+
+    path.push(start);
+
+    return path.reverse();
+}
+
