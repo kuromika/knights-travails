@@ -1,22 +1,14 @@
 
-class Knight{
+class Piece{
 
     position;
 
-    moves = [
-        [-2, -1],
-        [-2, 1], 
-        [-1, -2], 
-        [-1, 2], 
-        [1, -2], 
-        [1, 2], 
-        [2, -1], 
-        [2, 1]
-    ]
+    moves;
     
 
-    constructor(position) {
+    constructor(position, moves) {
         this.position = position;
+        this.moves = moves;
     }
 
     get position() {
@@ -35,3 +27,5 @@ class Knight{
         this._moves = arr;
     }
 }
+
+export default Piece;
